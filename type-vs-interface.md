@@ -6,23 +6,53 @@ In TypeScript, both `type` aliases and `interface` declarations can describe the
 
 ## Interfaces can be merged
 
-If you declare an interface more than once with the same name, TypeScript merges the declarations into one interface. In the example below, `Pet` has both `name` and `age`:
+If you declare an interface more than once with the same name, TypeScript merges the declarations into one interface. In this example, `Pet` ends up with both `name` and `age`:
 
-![Two declarations of the Pet interface, one with name and one with age](images/Screenshot%202026-11-09%20154205.png)
+```ts
+interface Pet {
+  name: string;
+}
+
+interface Pet {
+  age: number;
+}
+
+const myPet: Pet = {
+  name: "Milo",
+  age: 3,
+};
+```
 
 This behavior is called **declaration merging**. It can be useful when extending existing declarations, though it is important to avoid unintentionally reusing an interface name.
 
 ## Type aliases cannot be reopened
 
-A type alias cannot be declared again with the same name to add more properties. The screenshot shows two declarations of `animal`; TypeScript reports an error for the duplicate name rather than merging them.
+A type alias cannot be declared again with the same name to add more properties. TypeScript reports a duplicate identifier error for this example:
 
-![Duplicate type alias declarations for animal](images/Screenshot%202026-11-09%20154719.png)
+```ts
+type Animal = {
+  name: string;
+};
+
+// Error: Duplicate identifier 'Animal'
+type Animal = {
+  age: number;
+};
+```
 
 ## Type aliases can describe more than objects
 
 A type alias can name a primitive type, a union, or a tuple. For example, `Score` represents a number, `Status` represents one of two string values, and `Point` represents a pair of numbers:
 
-![Type aliases for a number, a string union, and a tuple](images/Screenshot%202026-11-09%20154744.png)
+```ts
+type Score = number;
+type Status = "active" | "inactive";
+type Point = [number, number];
+
+const score: Score = 100;
+const status: Status = "active";
+const point: Point = [10, 20];
+```
 
 An interface is designed to describe object shapes; it cannot directly define a primitive, union, or tuple in the same way.
 
