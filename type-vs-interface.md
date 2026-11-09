@@ -8,7 +8,7 @@ In TypeScript, both `type` aliases and `interface` declarations can describe the
 
 If you declare an interface more than once with the same name, TypeScript merges the declarations into one interface. In the example below, `Pet` has both `name` and `age`:
 
-![Two declarations of the Pet interface, one with name and one with age](<Screenshot 2026-11-09 154205.png>)
+![Two declarations of the Pet interface, one with name and one with age](images/Screenshot%202026-11-09%20154205.png)
 
 This behavior is called **declaration merging**. It can be useful when extending existing declarations, though it is important to avoid unintentionally reusing an interface name.
 
@@ -16,13 +16,13 @@ This behavior is called **declaration merging**. It can be useful when extending
 
 A type alias cannot be declared again with the same name to add more properties. The screenshot shows two declarations of `animal`; TypeScript reports an error for the duplicate name rather than merging them.
 
-![Duplicate type alias declarations for animal](<Screenshot 2026-11-09 154719.png>)
+![Duplicate type alias declarations for animal](images/Screenshot%202026-11-09%20154719.png)
 
 ## Type aliases can describe more than objects
 
 A type alias can name a primitive type, a union, or a tuple. For example, `Score` represents a number, `Status` represents one of two string values, and `Point` represents a pair of numbers:
 
-![Type aliases for a number, a string union, and a tuple](<Screenshot 2026-11-09 154744.png>)
+![Type aliases for a number, a string union, and a tuple](images/Screenshot%202026-11-09%20154744.png)
 
 An interface is designed to describe object shapes; it cannot directly define a primitive, union, or tuple in the same way.
 
