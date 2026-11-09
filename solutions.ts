@@ -31,8 +31,7 @@ const concatenateArrays = <T>(...arrays: T[][]):T[] => {
     for (let x of arrays) { 
         arr.push(...x)
     }
-    return arr
-
+    return arr;
 }
 
 
